@@ -7,6 +7,7 @@ import { IdeaBoard } from "./components/IdeaBoard";
 import { Sidebar } from "./components/Sidebar";
 import { WorkflowStepper } from "./components/WorkflowStepper";
 import {
+  initialPaperSearchParams,
   ideas,
   messages,
   navItems,
@@ -15,9 +16,15 @@ import {
   proposalPreview,
   workflowSteps,
 } from "./data/mockData";
+import { usePaperSearch } from "./hooks/usePaperSearch";
 
 export function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const paperSearch = usePaperSearch({
+    initialPapers: papers,
+    initialParams: initialPaperSearchParams,
+    autoSearch: true,
+  });
 
   return (
     <div className="app-shell">
@@ -29,10 +36,21 @@ export function App() {
 
         <div className="content-grid">
           <section className="agent-panel">
-            <ChatPanel messages={messages} onOpenDrawer={() => setDrawerOpen(true)} />
+            <ChatPanel
+              messages={messages}
+              searchParams={paperSearch.params}
+              onOpenDrawer={() => setDrawerOpen(true)}
+            />
             <IdeaBoard ideas={ideas} />
           </section>
-          <EvidencePanel papers={papers} proposalPreview={proposalPreview} />
+          <EvidencePanel
+            papers={paperSearch.papers}
+            proposalPreview={proposalPreview}
+            searchParams={paperSearch.params}
+            isLoading={paperSearch.isLoading}
+            error={paperSearch.error}
+            onSearch={paperSearch.runSearch}
+          />
         </div>
       </main>
 

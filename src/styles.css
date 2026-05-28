@@ -443,6 +443,98 @@ h1 {
   margin-bottom: 14px;
 }
 
+.paper-search-controls {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: #f8fbfd;
+  border: 1px solid #dfe8f0;
+  border-radius: 8px;
+}
+
+.search-field {
+  display: grid;
+  gap: 5px;
+}
+
+.search-field span {
+  color: #728094;
+  font-size: 12px;
+}
+
+.search-field input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 10px;
+  color: #273244;
+  background: #fff;
+  border: 1px solid #d9e4ed;
+  border-radius: 8px;
+  outline: none;
+}
+
+.search-field input:focus {
+  border-color: #73aef6;
+  box-shadow: 0 0 0 3px rgba(64, 134, 232, 0.13);
+}
+
+.year-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mode-tabs button,
+.search-submit {
+  min-height: 36px;
+  border-radius: 8px;
+}
+
+.mode-tabs button {
+  color: #526174;
+  background: #fff;
+  border: 1px solid #d9e4ed;
+}
+
+.mode-tabs button.selected {
+  color: #1f65c7;
+  background: #eaf3ff;
+  border-color: #9ec7fb;
+}
+
+.search-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #fff;
+  background: #17202c;
+  border: 0;
+}
+
+.search-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.search-error {
+  margin-bottom: 12px;
+  padding: 10px;
+  color: #9a4f00;
+  background: #fff7e8;
+  border: 1px solid #f3d39c;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .paper-list {
   display: grid;
   gap: 12px;
@@ -481,6 +573,15 @@ h1 {
   border-radius: 8px;
   font-size: 13px;
   line-height: 1.55;
+}
+
+.paper-link {
+  display: inline-flex;
+  margin-top: 10px;
+  color: #2169c8;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .proposal-preview {

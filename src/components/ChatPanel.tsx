@@ -1,11 +1,13 @@
 import type { AgentMessage } from "../types";
+import type { PaperSearchParams } from "../types";
 
 type ChatPanelProps = {
   messages: AgentMessage[];
+  searchParams: PaperSearchParams;
   onOpenDrawer: () => void;
 };
 
-export function ChatPanel({ messages, onOpenDrawer }: ChatPanelProps) {
+export function ChatPanel({ messages, searchParams, onOpenDrawer }: ChatPanelProps) {
   return (
     <section className="chat-card" id="agent">
       <div className="card-heading">
@@ -23,7 +25,9 @@ export function ChatPanel({ messages, onOpenDrawer }: ChatPanelProps) {
         </div>
         <div>
           <span>时间范围</span>
-          <strong>2024-2026</strong>
+          <strong>
+            {searchParams.fromYear}-{searchParams.toYear}
+          </strong>
         </div>
         <div>
           <span>当前步骤</span>

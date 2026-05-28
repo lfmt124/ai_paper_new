@@ -4,7 +4,7 @@ import {
   MessageSquareText,
   Settings,
 } from "lucide-react";
-import type { AgentMessage, Idea, NavItem, Paper, WorkflowStep } from "../types";
+import type { AgentMessage, Idea, NavItem, Paper, PaperSearchParams, WorkflowStep } from "../types";
 
 export const navItems: NavItem[] = [
   { label: "Agent 工作台", href: "#agent", icon: MessageSquareText, active: true },
@@ -68,6 +68,7 @@ export const papers: Paper[] = [
     type: "empirical",
     contribution: "比较 LLM 反馈与教师反馈在研究生学术写作训练中的互补作用。",
     evidence: "支持挑战 1：长期学习效果仍缺少跨学期追踪证据。",
+    source: "Mock",
   },
   {
     id: "p2",
@@ -78,6 +79,7 @@ export const papers: Paper[] = [
     type: "review",
     contribution: "总结 AI 写作工具在高等教育中的干预方式、评价指标和伦理风险。",
     evidence: "用于新颖性验证：该方向已有综述，但真实课堂数据仍不足。",
+    source: "Mock",
   },
   {
     id: "p3",
@@ -88,8 +90,17 @@ export const papers: Paper[] = [
     type: "latest",
     contribution: "提出 prompt literacy 会影响学生采纳 AI 反馈的深度。",
     evidence: "支持 idea：把提示词素养作为中介变量进行实证检验。",
+    source: "Mock",
   },
 ];
+
+export const initialPaperSearchParams: PaperSearchParams = {
+  query: "large language models education",
+  fromYear: 2021,
+  toYear: 2023,
+  mode: "trends",
+  perPage: 8,
+};
 
 export const ideas: Idea[] = [
   {

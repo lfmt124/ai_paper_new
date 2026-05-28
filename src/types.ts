@@ -18,6 +18,21 @@ export type Paper = {
   type: string;
   contribution: string;
   evidence: string;
+  abstract?: string;
+  citedByCount?: number;
+  doi?: string;
+  url?: string;
+  source?: string;
+};
+
+export type PaperSearchMode = "trends" | "latest" | "review";
+
+export type PaperSearchParams = {
+  query: string;
+  fromYear: number;
+  toYear: number;
+  mode: PaperSearchMode;
+  perPage: number;
 };
 
 export type Idea = {
