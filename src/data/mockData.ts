@@ -6,6 +6,10 @@ import {
 } from "lucide-react";
 import type { AgentMessage, Idea, NavItem, Paper, PaperSearchParams, WorkflowStep } from "../types";
 
+// 第一阶段静态原型使用的示例数据。
+// 后续接真实后端时，优先替换 hooks/services 的数据来源，不要在组件里写死数据。
+
+// 侧边栏导航配置：新增页面入口时优先改这里。
 export const navItems: NavItem[] = [
   { label: "Agent 工作台", href: "#agent", icon: MessageSquareText, active: true },
   { label: "我的文献库", href: "#library", icon: Library },
@@ -13,12 +17,14 @@ export const navItems: NavItem[] = [
   { label: "设置", href: "#settings", icon: Settings },
 ];
 
+// 左侧“最近项目”占位数据，后续会来自用户项目列表接口。
 export const projectHistory = [
   "AI 辅助学术写作",
   "短视频健康传播",
   "生成式 AI 与课堂互动",
 ];
 
+// 顶部 6 步工作流状态。status 控制步骤卡片的视觉状态。
 export const workflowSteps: WorkflowStep[] = [
   {
     id: "scan",
@@ -36,19 +42,19 @@ export const workflowSteps: WorkflowStep[] = [
     id: "novelty",
     label: "新颖性验证",
     summary: "检索综述和最新进展",
-    status: "active",
+    status: "done",
   },
   {
     id: "data",
     label: "数据可行性",
     summary: "检查样本、变量和可证伪性",
-    status: "next",
+    status: "done",
   },
   {
     id: "method",
     label: "方法缺口分析",
     summary: "寻找可引入的新方法",
-    status: "next",
+    status: "active",
   },
   {
     id: "proposal",
@@ -58,6 +64,7 @@ export const workflowSteps: WorkflowStep[] = [
   },
 ];
 
+// 初始论文兜底数据：真实检索失败或无结果时，页面不会空白。
 export const papers: Paper[] = [
   {
     id: "p1",
@@ -94,14 +101,18 @@ export const papers: Paper[] = [
   },
 ];
 
+// 页面加载后自动检索的默认参数。
+// 注意：OpenAlex 对部分 2024+ 筛选不稳定，所以默认先用 2021-2023 做 MVP 验证。
 export const initialPaperSearchParams: PaperSearchParams = {
   query: "large language models education",
   fromYear: 2021,
   toYear: 2023,
   mode: "trends",
+  source: "combined",
   perPage: 8,
 };
 
+// 第一阶段候选 idea 展示数据。第三步之后也会由 gapScanAgent 生成结构化 idea。
 export const ideas: Idea[] = [
   {
     title: "提示词素养如何影响 AI 反馈采纳",
@@ -123,6 +134,7 @@ export const ideas: Idea[] = [
   },
 ];
 
+// Agent 对话区的演示消息，帮助静态原型呈现完整工作流。
 export const messages: AgentMessage[] = [
   {
     role: "user",
@@ -138,5 +150,6 @@ export const messages: AgentMessage[] = [
   },
 ];
 
+// 右侧提案预览的占位文案，后续会由“提案生成 Agent”替换。
 export const proposalPreview =
   "本研究拟探讨研究生提示词素养如何影响其对 AI 写作反馈的采纳过程。既有研究已经证明 AI 写作工具能提升反馈可得性，但对学生如何理解、选择并转化这些反馈的机制解释仍不足。研究将结合写作反馈理论和人机协作视角，采集研究生论文修改记录、AI 反馈日志与访谈材料，分析提示词素养、反馈采纳深度和写作表现之间的关系。";

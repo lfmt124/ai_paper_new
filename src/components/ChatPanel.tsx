@@ -7,6 +7,8 @@ type ChatPanelProps = {
   onOpenDrawer: () => void;
 };
 
+// Agent 对话面板：展示当前扫描摘要和对话消息。
+// 它不负责生成回复；真实回复应来自后续的 Agent service/hook。
 export function ChatPanel({ messages, searchParams, onOpenDrawer }: ChatPanelProps) {
   return (
     <section className="chat-card" id="agent">

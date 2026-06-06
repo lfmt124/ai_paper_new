@@ -4,6 +4,8 @@ type AppHeaderProps = {
   onOpenDrawer: () => void;
 };
 
+// 页面顶部标题区：负责说明当前产品目标，并提供主要操作入口。
+// “新建扫描”按钮通过 onOpenDrawer 通知 App 打开右侧抽屉。
 export function AppHeader({ onOpenDrawer }: AppHeaderProps) {
   return (
     <header className="topbar">

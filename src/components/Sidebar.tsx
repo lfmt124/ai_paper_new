@@ -6,6 +6,8 @@ type SidebarProps = {
   projectHistory: string[];
 };
 
+// 左侧固定导航：品牌、主导航、最近项目。
+// 它只接收配置数据，不关心当前业务流程，方便以后替换成真实项目列表。
 export function Sidebar({ navItems, projectHistory }: SidebarProps) {
   return (
     <aside className="sidebar">

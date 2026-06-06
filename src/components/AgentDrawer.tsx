@@ -5,6 +5,8 @@ type AgentDrawerProps = {
   onClose: () => void;
 };
 
+// 右侧抽屉：收集用户的研究身份、领域、具体方向和想运行的工作流。
+// 当前表单还没有提交到后端，后续接 Agent 时应把这里改成受控表单并触发真实任务。
 export function AgentDrawer({ open, onClose }: AgentDrawerProps) {
   if (!open) {
     return null;
@@ -29,8 +31,6 @@ export function AgentDrawer({ open, onClose }: AgentDrawerProps) {
           <select defaultValue="博士生">
             <option>硕士生</option>
             <option>博士生</option>
-            <option>科研助理</option>
-            <option>教师/研究者</option>
           </select>
         </label>
 

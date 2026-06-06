@@ -8,9 +8,12 @@ type PaperSearchControlsProps = {
   onSearch: (params: PaperSearchParams) => void;
 };
 
+// 论文检索表单：只维护用户正在编辑的 draft 参数。
+// 点击“检索论文”时才把 draft 通过 onSearch 交给 usePaperSearch。
 export function PaperSearchControls({ params, isLoading, onSearch }: PaperSearchControlsProps) {
   const [draft, setDraft] = useState(params);
 
+  // 泛型写法保证 key 和 value 类型匹配，例如 mode 只能传 PaperSearchMode。
   function updateDraft<Key extends keyof PaperSearchParams>(key: Key, value: PaperSearchParams[Key]) {
     setDraft((current) => ({
       ...current,
@@ -59,6 +62,7 @@ export function PaperSearchControls({ params, isLoading, onSearch }: PaperSearch
       </div>
 
       <div className="mode-tabs" aria-label="检索模式">
+        {/* mode 会影响服务层排序和查询词：trends=高引用，latest=新论文，review=追加 review。 */}
         {[
           ["trends", "高影响"],
           ["latest", "最新"],
@@ -74,6 +78,19 @@ export function PaperSearchControls({ params, isLoading, onSearch }: PaperSearch
           </button>
         ))}
       </div>
+
+      <label className="search-field primary">
+        <span>数据源</span>
+        {/* source 会决定调用单一数据源还是多源聚合。 */}
+        <select
+          value={draft.source}
+          onChange={(event) => updateDraft("source", event.target.value as PaperSearchParams["source"])}
+        >
+          <option value="combined">多源聚合</option>
+          <option value="semanticScholar">Semantic Scholar</option>
+          <option value="openalex">OpenAlex</option>
+        </select>
+      </label>
 
       <button className="search-submit" type="submit" disabled={isLoading || !draft.query.trim()}>
         <Search size={16} />

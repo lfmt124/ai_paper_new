@@ -5,6 +5,7 @@ type IdeaBoardProps = {
   ideas: Idea[];
 };
 
+// 候选 idea 总览卡片。第一阶段展示 mock idea，后续可直接接 gapScanAgent 输出。
 export function IdeaBoard({ ideas }: IdeaBoardProps) {
   return (
     <section className="idea-section">
